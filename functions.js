@@ -1,3 +1,20 @@
+
+function displayAreaCode(inputId, outputId) {
+    var outputText = "";
+    var phoneNum = document.getElementById(inputId).value;
+
+    // Now try to get the code
+    try {
+        var areaCode = getAreaCode(phoneNum);
+        outputText = "Your area code is " + areaCode;
+    } catch (error) {
+        console.log(error.message);
+        outputText = error.message;
+    }
+
+    document.getElementById(outputId).innerHTML = outputText;
+}
+
 /**
 * Removes part of string between two sub strings
 * @param {string} text The original string
@@ -50,18 +67,3 @@ function getAreaCode(phoneNum) {
  * @param {string} inputId  The element id for the text box
  * @param {string} outputId The element id of message div
  */
-function displayAreaCode(inputId, outputId) {
-    var outputText = "";
-    var phoneNum = document.getElementById(inputId).value;
-
-    // Now try to get the code
-    try {
-        var areaCode = getAreaCode(phoneNum);
-        outputText = "Your area code is " + areaCode;
-    } catch (error) {
-        console.log(error.message);
-        outputText = error.message;
-    }
-
-    document.getElementById(outputId).innerHTML = outputText;
-}
