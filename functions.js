@@ -61,7 +61,6 @@ function getLineCode(phoneNum){
             throw new Error("Invalid phone number: " + error.message);
 
         }
-
  }
 
 /**
