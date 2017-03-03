@@ -67,3 +67,37 @@ function getAreaCode(phoneNum) {
  * @param {string} inputId  The element id for the text box
  * @param {string} outputId The element id of message div
  */
+function validPhone(phonNum) {
+	// check and remove parenthesis
+	if (phoneNum.indexOf('(') != 0 && phoneNum.indexOf(')') != 4) {
+		console.log("Missing parenthesis.");
+		return false;
+	}
+	else {
+		//remove the parenthesis
+		phonNum = phonNum.replace(')', '');
+		phonNum = phonNum.replace('(', '');
+		console.log(phonNum);
+	}
+	// check to see if the - is in the correct place and the other digits are numbers
+	var cell = phonNum.split('-');
+	console.log(cell);
+	if (Number(cell[1]) && Number(cell[0]) && number.charAt(6) == '-' && number.length == 11) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function disPhoneNum(inputId, outputId) {
+ var phoneNum = document.getElementById(inputId).value;
+    var outputText = "";
+	if (validPhone(phoneNum) == true) {
+		outputText = "The number " + phoneNum + " is a actual phone number.";
+	}
+	else {
+		outputText = "The number " + phoneNum + " is not a phone number.";
+	}
+	document.getElementById(outputId).innerHTML = outputText;
+}
