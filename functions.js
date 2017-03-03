@@ -1,20 +1,3 @@
-
-function displayAreaCode(inputId, outputId) {
-    var outputText = "";
-    var phoneNum = document.getElementById(inputId).value;
-
-    // Now try to get the code
-    try {
-        var areaCode = getAreaCode(phoneNum);
-        outputText = "Your area code is " + areaCode;
-    } catch (error) {
-        console.log(error.message);
-        outputText = error.message;
-    }
-
-    document.getElementById(outputId).innerHTML = outputText;
-}
-
 /**
 * Removes part of string between two sub strings
 * @param {string} text The original string
@@ -39,11 +22,10 @@ function between(string, start, end) {
 
     return string.slice(startAt, endAt);
 }
-
 /**
- * Returns an area code from a phone number: (###) ###-####
+ * Returns an area code from a phone number
  * @param   {string} phoneNum The phone number
- * @returns {string} The area code * @throws {Error} If the format is incorrect
+ * @returns {string} The area code
  */
 function getAreaCode(phoneNum) {
 
@@ -52,52 +34,74 @@ function getAreaCode(phoneNum) {
     try {
         areaCode = between(phoneNum, "(", ")");
         areaCode = areaCode.trim();
-        if (areaCode.length == 3 && Number(areaCode)) {
+        if(areaCode.length == 3 && Number(areaCode)){
             return areaCode;
-        } else {
+        } else{
             throw new Error("Invalid area code: " + areaCode);
         }
     } catch (error) {
         throw new Error("Invalid phone number: " + error.message);
+        console.log(error.message);
+        //return undefined;
     }
 }
+
+function getLineCode(phoneNum){
+    var lineCode;
+
+    try{
+        lineCode = between(phoneNum, "-","");
+        lineCode = lineCode.trim();
+        if(lineCode.length = 4 && Number(lineCode)){
+            return lineCode;
+        } else{
+            throw new Error("Invalid line code: " + lineCode);
+        }
+    }catch (error) {
+            throw new Error("Invalid phone number: " + error.message);
+
+        }
+
+ }
 
 /**
  * Displays the area code for an inputted phone number
  * @param {string} inputId  The element id for the text box
  * @param {string} outputId The element id of message div
  */
-function validPhone(phonNum) {
-	// check and remove parenthesis
-	if (phoneNum.indexOf('(') != 0 && phoneNum.indexOf(')') != 4) {
-		console.log("Missing parenthesis.");
-		return false;
-	}
-	else {
-		//remove the parenthesis
-		phonNum = phonNum.replace(')', '');
-		phonNum = phonNum.replace('(', '');
-		console.log(phonNum);
-	}
-	// check to see if the - is in the correct place and the other digits are numbers
-	var cell = phonNum.split('-');
-	console.log(cell);
-	if (Number(cell[1]) && Number(cell[0]) && number.charAt(6) == '-' && number.length == 11) {
-		return true;
-	}
-	else {
-		return false;
-	}
+function displayAreaCode(inputId, outputId) {
+    var outputText = "";
+    var phoneNum = document.getElementById(inputId).value;
+
+    // Now try to get the code
+    try {
+        var areaCode = getAreaCode(phoneNum);
+        outputText = "Your area code is " + areaCode;
+    } catch (error) {
+        console.log(error.message);
+        outputText = error.message;
+    }
+
+    document.getElementById(outputId).innerHTML = outputText;
 }
 
-function disPhoneNum(inputId, outputId) {
- var phoneNum = document.getElementById(inputId).value;
+/**
+ * Displays the line code for an inputted phone number
+ * @param {string} inputId  The element id for the text box
+ * @param {string} outputId The element id of message div
+ */
+function displayLineCode(inputId, outputId) {
     var outputText = "";
-	if (validPhone(phoneNum) == true) {
-		outputText = "The number " + phoneNum + " is a actual phone number.";
-	}
-	else {
-		outputText = "The number " + phoneNum + " is not a phone number.";
-	}
-	document.getElementById(outputId).innerHTML = outputText;
+    var phoneNum = document.getElementById(inputId).value;
+
+    // Now try to get the code
+    try {
+        var lineCode = getLineCode(phoneNum);
+        outputText = "Your line code is " + lineCode;
+    } catch (error) {
+        console.log(error.message);
+        outputText = error.message;
+    }
+
+    document.getElementById(outputId).innerHTML = outputText;
 }
