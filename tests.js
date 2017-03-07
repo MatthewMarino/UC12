@@ -12,3 +12,8 @@ QUnit.test( "Errors thrown for getAreaCode", function( assert ) {
         getAreCode("(415) 312-8774");
     }, "Missing ')'. An error should have been thrown." );
 });
+QUnit.test("Test the Cocode function.", function (assert) {
+    var num = "(415) 555-5555";
+    var result = Cocode(num);
+    assert.deepEqual(result, "415", "Valid area code test passed.");
+});

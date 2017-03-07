@@ -110,7 +110,7 @@ function getCoCode(phoneNum) {
     var CoCode;
 
     try {
-        CoCode = between(phoneNum, "()"");
+        CoCode = between(phoneNum, "(", ")");
         CoCode = CoCode.trim();
         if (CoCode.length == 3 && Number(CoCode)) {
             return CoCode;
