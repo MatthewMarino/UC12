@@ -101,7 +101,7 @@ function displayLineCode(inputId, outputId) {
 
     // Now try to get the code
     try {
-        var areaCode = getLineCode(phoneNum);
+        var lineCode = getLineCode(phoneNum);
         outputText = "Your line code is " + lineCode;
     } catch (error) {
         console.log(error.message);
