@@ -133,7 +133,7 @@ function getCoCode(phoneNum) {
 }
 
 /**
- * Displays the CO code for an inputted phone number
+ * Displays the CoCode for an inputted phone number
  * @param {string} inputId  The element id for the text box
  * @param {string} outputId The element id of message div
  */

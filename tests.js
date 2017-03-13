@@ -30,3 +30,8 @@ QUnit.test( "Errors thrown for getCoCode", function( assert ) {
         getCoCode("(415) 555-5555");
     }, "Missing '('. An error should have been thrown." );
 });
+QUnit.test("Test the getCoCode(phoneNum) function.", function (assert) {
+    var num = "(415) 521-5555";
+    var result = getCoCode(num);
+    assert.deepEqual(result, "521", "Valid Cocode test passed.");
+});
