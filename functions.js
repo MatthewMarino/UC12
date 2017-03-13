@@ -110,14 +110,35 @@ function getCoCode(phoneNum) {
     var CoCode;
 
     try {
-        CoCode = between(phoneNum, "(", ")");
+        CoCode = between(phoneNum, ")" , "-");
         CoCode = CoCode.trim();
         if (CoCode.length == 3 && Number(CoCode)) {
             return CoCode;
         } else {
-            throw new Error("Invalid co code: " + CoCode);
+            throw new Error("Invalid cocode: " + CoCode);
         }
     } catch (error) {
         throw new Error("Invalid phone number: " + error.message);
     }
 }
+/**
+ * Displays the CoCode for an inputted phone number
+ * @param {string} inputId  The element id for the text box
+ * @param {string} outputId The element id of message div
+ */
+function displayCoCode(inputId, outputId) {
+    var outputText = "";
+    var phoneNum = document.getElementById(inputId).value;
+
+    // Now try to get the code
+    try {
+        var CoCode = getCoCode(phoneNum);
+        outputText = "Your co code is " + CoCode;
+    } catch (error) {
+        console.log(error.message);
+        outputText = error.message;
+    }
+
+    document.getElementById(outputId).innerHTML = outputText;
+}
+
