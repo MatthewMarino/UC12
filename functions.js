@@ -152,39 +152,3 @@ function displayCoCode(inputId, outputId) {
 
     document.getElementById(outputId).innerHTML = outputText;
 }
-/*
-function validPhone(phoneNum) {
-	// check and remove parenthesis
-	if (phoneNum.indexOf('(') != 0 && phoneNum.indexOf(')') != 4) {
-		console.log("Missing parenthesis.");
-		return false;
-	}
-	else {
-		//remove the parenthesis
-		phoneNum = phoneNum.replace(')', '');
-		phoneNum = phoneNum.replace('(', '');
-		console.log(phoneNum);
-	}
-	// check to see if the - is in the correct place and the other digits are numbers
-	var cell = phoneNum.split('-');
-	console.log(cell);
-	if (Number(cell[1]) && Number(cell[0]) && phoneNum.charAt(6) == '-' && phoneNum.length == 11) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-function disPhoneNum(inputId, outputId) {
-	var input = document.getElementById(inputId).value;
-	var outputText = "";
-	if (validPhone(input) == true) {
-		outputText = "The number " + input + " is a actual phone number.";
-	}
-	else {
-		outputText = "The number " + input + " is not a phone number.";
-	}
-	document.getElementById(outputId).innerHTML = outputText;
-}
-*/
