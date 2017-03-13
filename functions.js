@@ -97,7 +97,7 @@ function getLineCode(phoneNum) {
 function displayLineCode(inputId, outputId) {
 
     var outputText = "";
-    var phoneNum = document.getElementById(outputId).value;
+    var phoneNum = document.getElementById(inputId).value;
 
     // Now try to get the code
     try {
